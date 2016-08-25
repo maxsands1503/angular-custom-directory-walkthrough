@@ -13,12 +13,12 @@
   <link rel="stylesheet" href="/css/style.css" media="screen" charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+    <!--The base href is a critical component of ui-router, make sure it is present!-->
     <base href="/">
   </head>
   <body>
 
-
+    <!--Another important component of ui-router, this allows us to render our templates on our index.html-->
     <div ui-view></div>
 
 
@@ -26,7 +26,7 @@
     <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    <!-- <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script> -->
+
     <script type="text/javascript" src="/js/app.js"></script>
 
 <script type="text/javascript" src="controllers/homeController.js">

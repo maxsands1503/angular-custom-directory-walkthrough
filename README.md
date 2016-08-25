@@ -50,3 +50,34 @@ aboutMe  -->
 <script type="text/javascript" src="/components/myDirective/directive-services.js"></script>
 ```
 ##App.js
+
+We start by creating an IIFE (Immediately Invoked Function Expression), inside of which we set our `angular.module()`, we pass in the name of our app and the directives we will be using, in this case it is 'ui.router' and 'custom.directive'.  
+
+Then, still inside of the IIFE, we do a '.config', which we pass '$stateProvider', '$urlRouterProvider' and '$locationProvider' as arguments. These are all components of ui-router.   
+
+The first line inside of the '.config' will be our `$urlRouterProvider.otherwise()`, which will pass the value of root, '/', which will default our app to the root route when an non-existent route is selected.   
+
+We will then set up our other route, which in this case will be the home route. We start by adding '$stateProvider', underneath we do '.state', where will pass in the name of the route, 'home', the url, '/', the templateUrl, '/templates/home.html' and the controller, 'homeController'.
+
+Your final app.js should look like this:   
+```
+(function(){
+  angular
+    .module('custom',[
+     'ui.router',
+     'custom.directive'
+   ])
+      .config(function($stateProvider, $urlRouterProvider, $locationProvider){
+
+      $urlRouterProvider.otherwise('/');
+
+      $stateProvider
+        .state('home',{
+          url: '/',
+          templateUrl: '/templates/home.html',
+          controller: 'homeController'
+        });
+      });
+})();
+
+```
