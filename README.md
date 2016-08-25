@@ -81,3 +81,23 @@ Your final app.js should look like this:
 })();
 
 ```
+##Setting up the controller  
+
+We will now set up 'home.js'. We start by adding a IIFE (we love IIFEs). We will place inside of it 'angular.module' statement, which we again pass the name of our app, which is still 'custom'. Beneath the '.module' we will place a '.controller', where we will pass in the name of 'homeController' as a string and after as a variable. We will then inject '$scope' and '$location' into 'homeController'. We have a test function at the bottom, just to ensure everything is working properly, it is not necessary.
+
+Your final 'home.js' should look like this.  
+
+```
+(function(){
+  angular
+    .module('custom')
+    .controller('homeController', homeController);
+
+    homeController.$inject= ['$scope', '$location'];
+
+    function homeController($scope, $location){
+      console.log('homeController');
+
+    }
+})();
+```
