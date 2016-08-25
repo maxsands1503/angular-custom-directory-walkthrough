@@ -9,17 +9,17 @@ The initial set up for this is very easy. We do not have to install anything thr
 In our root directory we are going to have five directories and our index.html. In our 'components' subdirectory well have another directory called 'myDirective', which will have three javascript files, 'custom-directive.js', 'directive-services.js' and 'directive.js'. In our 'controllers' directory we will have one javascript file, 'home.js'. In our 'js' directory we will have our 'app.js'. In our 'templates' subdirectory we will have 'home.html'. In our 'css' directory we will have 'style.css'.
 - root  
   1. components    
-  - custom-directive.js  
-  - directive-services.js  
-  - directive.js
+    * custom-directive.js  
+    * directive-services.js  
+    * directive.js
   2. controllers  
-  - homeController.js  
+    * homeController.js  
   3. js  
-  - app.js  
+    * app.js  
   4. templates  
-  - home.html  
+    * home.html  
   5. css  
-  - style.css  
+    * style.css  
   6. index.html
 
 ###index.html
