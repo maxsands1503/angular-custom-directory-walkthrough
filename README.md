@@ -18,6 +18,7 @@ In our root directory we are going to have five directories and our index.html. 
     * app.js  
   4. templates  
     * home.html  
+    * custom-directive.html  
   5. css  
     * style.css  
   6. index.html
@@ -101,3 +102,74 @@ Your final 'home.js' should look like this.
     }
 })();
 ```
+##Setting up custom-directive.js  and directive.js
+
+We are going to start making the main feature of this walkthrough, the directive. Now you may be asking yourself, "what is a custom directive?"
+
+> At a high level, directives are markers on a DOM element (such as an attribute, element name, comment or CSS class) that tell AngularJS's HTML compiler ($compile) to attach a specified behavior to that DOM element (e.g. via event listeners), or even to transform the DOM element and its children.
+
+[Source](https://docs.angularjs.org/guide/directive)  
+Essentially, a custom directive is a directive we make to manipulate the DOM in some form.
+
+To start, we are going to add a IIFE in our 'custom-directive.js' file, which you should be used to by now. We are going to do our 'angular.module()' statement. Next we will do our '.directive()' statement, where well pass in the name 'customDirective' and a variable by the same name. We will then create a function that  will return our directive. Inside the function we will declare a variable called 'directive' and we will set it equal to an object. Inside of the object we will have "restrict: 'E'", which sets the restriction to DOM elements only. The next set of key-value pairs will be "templateUrl: '/templates/custom-directive.html'". Following that, our next pair will be 'scope', set to an empty object, which creates an isolate scope for the directive. Then we will have "controller: directiveController", which allows us to pass around scope. Finally, we will have "controllerAs: 'directiveController'", this will keep the controller intact if/when we minify.   
+
+Now that our directive object is completed, we will return the variable 'directive' and close the function.  
+
+We will, underneath the closing bracket of the function inject and empty array to 'directiveController'. There is a test function, that calls 'directiveController'.
+
+Your final product will look like:
+
+```
+//make iife
+(function(){
+  //set up module for angular
+  angular
+    .module('custom.MyDirective.custom-directive', [])
+    //make the directive name
+    .directive('customDirective', customDirective);
+    //make fuction to return the directive
+    function customDirective(){
+      var directive = {
+        //restrict to a dom element
+        restrict: 'E',
+        //html that the directive will use
+        templateUrl: '/templates/custom-directive.html',
+        //makeing isolate scope for the directive
+        scope: {},
+        //adds a controller for the directive to use to pass scope around
+        controller: directiveController,
+        //pass the controller as for when the file is minify
+        controllerAs: 'directiveController'
+      };
+      //return the directive that we made
+      return directive;
+}
+directiveController.$inject = [];
+function directiveController() {
+console.log('hit');
+}
+})();
+
+```
+##Setting up directive.js  
+
+We will declare at the top of the file 'use strict'.
+
+We will do our final 'angular.module()', which we will pass 'custom.directive' and inside of square brackets we will pass 'custom.MyDirective.custom-directive'.   
+
+Your final 'directive.js' file should look thusly:
+
+```
+
+"use strict";
+
+angular
+  .module('custom.directive',[
+    'custom.MyDirective.custom-directive'
+    // 'custom.MyDirective.directive-services'
+]);
+```
+
+##Setting up directive-services.js and style.css
+
+They are both empty, bam, you're done. Style it if you want, but for the purposes of this exercise, you don't have to.
